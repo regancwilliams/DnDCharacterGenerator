@@ -1,5 +1,6 @@
 from random import randint
-
+import random
+from Subclasses import DruidSubclasses
 class DruidDetails():
 
     def getDruidEquiptment(self, simpleMeleeWeapons, simpleRangedWeapons):
@@ -30,10 +31,4 @@ class DruidDetails():
         return equiptment
 
     def getDruidSubclass(self):
-        subclasses = ["Circle of Dreams", "Circle of Stars", "Circle of Wildfire",
-                      "Circle of the Land", "Circle of the Moon", "Circle of the Shepherd",
-                      "Circle of Spores", ]
-
-        subclass = subclasses[randint(0, len(subclasses) - 1)]
-
-        return subclass
+        return random.choice(list(DruidSubclasses))

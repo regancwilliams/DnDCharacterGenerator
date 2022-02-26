@@ -10,6 +10,7 @@ class CharacterFlaws():
              "Believes that every npc is out to get them",
              "Can't tell the difference between alive and undead",
              "Can't keep a secret",
+             "Severe nut allergy",
              "Sleepwalks",
              "Doesn't like to sleep alone",
              "Really bad at remembering names"

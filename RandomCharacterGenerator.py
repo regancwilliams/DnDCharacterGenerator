@@ -1,16 +1,13 @@
 from random import randint
-import Barbarian, Bard, Cleric, Druid, Fighter, Rogue, Wizard
+import random
+import AbilityScores
+from Classes import Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Wizard
+from Races import Dragonborn, Dwarf, Elf, Gnome, Tiefling
 import Flaws
+from Constants import *
+from Character import Character
 
 def main():
-    classes = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger",
-                "Rogue", "Sorcerer", "Warlock", "Wizard"]
-
-    races = ["Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Half-Orc", "Tifling",
-            "Human"]
-
-    alignments = ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral",
-                "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"]
 
     names = ["ColdToes", "Karen", "Chad", "Namphootle", "Alarick", "Wrathion"]
 
@@ -33,29 +30,35 @@ def main():
     magicalItems = ["A sword that inflicts emotiional wounds", "A rope that is always slightly too short for what you want to use it for",
                     "Negative gold pieces", "Armour that becomes more effective the uglier the wearer"]
 
+    randomCharacter = Character()
+
     equiptment = []
 
     subclass = "" #Can delete once all classes have getSubclass functions
 
     dndName = names[randint(0, len(names) - 1)]
-    dndClass = classes[randint(0, len(classes) - 1)]
-    dndRace = races[randint(0, len(races) - 1)]
-    dndAlignment = alignments[randint(0, len(alignments) - 1)]
+
+    dndClass = random.choice(list(Classes))
+    dndRace = random.choice(list(Races))
+    dndAlignment = random.choice(list(Alignment))
+
+    dndClass = "Cleric"
+    dndRace = "Gnome"
 
     if dndClass == "Barbarian":
-        barbarian = Barbarian.BarbarianDetails()
-        equiptment = barbarian.getBarbarianEquiptment(simpleMeleeWeapons, simpleRangedWeapons, martialMeleeWeapons)
-        subclass = barbarian.getBarbarianSubclass()
+        randomCharacter = Barbarian.BarbarianDetails()
+        equiptment = randomCharacter.getBarbarianEquiptment(simpleMeleeWeapons, simpleRangedWeapons, martialMeleeWeapons)
+        subclass = randomCharacter.getBarbarianSubclass()
 
     elif dndClass == "Bard":
-        bard = Bard.BardDetails()
-        equiptment = bard.getBardEquiptment(simpleMeleeWeapons, simpleRangedWeapons, musicalInstruments)
-        subclass = bard.getBardSubclass()
+        randomCharacter = Bard.BardDetails()
+        equiptment = randomCharacter.getBardEquiptment(simpleMeleeWeapons, simpleRangedWeapons, musicalInstruments)
+        subclass = randomCharacter.getBardSubclass()
 
     elif dndClass == "Cleric":
-        cleric = Cleric.ClericDetails()
-        equiptment = cleric.getClericEquiptment(simpleMeleeWeapons, simpleRangedWeapons)
-        subclass = cleric.getClericSubclass()
+        randomCharacter = Cleric.ClericDetails()
+        equiptment = randomCharacter.getClericEquiptment(simpleMeleeWeapons, simpleRangedWeapons)
+        subclass = randomCharacter.getClericSubclass()
 
     elif dndClass == "Druid":
         druid = Druid.DruidDetails()
@@ -68,13 +71,19 @@ def main():
         subclass = fighter.getFighterSubclass()
 
     elif dndClass == "Monk":
-        x = 4
+        monk = Monk.MonkDetails()
+        equiptment = monk.getMonkEquiptment(simpleMeleeWeapons, simpleRangedWeapons)
+        subclass = monk.getMonkSubclass()
 
     elif dndClass == "Paladin":
-        x = 4
+        paladin = Paladin.PaladinDetails()
+        equiptment = paladin.getPaladinEquiptment()
+        subclass = paladin.getPaladinSubclass()
 
     elif dndClass == "Ranger":
-        x = 4
+        randomCharacter = Ranger.RangerDetails()
+        equiptment = randomCharacter.getRangerEquiptment()
+        subclass = randomCharacter.getRangerSubclass()
 
     elif dndClass == "Rogue":
         rogue = Rogue.RogueDetails()
@@ -92,14 +101,49 @@ def main():
             equiptment = wizard.getWizardEquiptment()
             subclass = wizard.getWizardSubclass()
 
+    if dndRace == "Dragonborn":
+        characterRace = Dragonborn.DragonbornDetails()
+    elif dndRace == "Dwarf":
+        characterRace = Dwarf.DwarfDetails()
+    elif dndRace == "Elf":
+        characterRace = Elf.ElfDetails()
+    elif dndRace == "Gnome":
+        characterRace = Gnome.GnomeDetails()
+    elif dndRace == "Tifling":
+        characterRace = Tiefling.TieflingDetails()
+
+    abilityScore = AbilityScores.AbilityScores()
+
+    randomCharacter.age = characterRace.getAge()
+    randomCharacter.height = characterRace.getHeight()
+    randomCharacter.weight = characterRace.getWeight()
+    randomCharacter.speed = characterRace.getSpeed()
+
+    # Generate Ability Scores
+    #TODO: Optimize scores based on class
+    randomCharacter.charisma = abilityScore.getRandomScore()
+    randomCharacter.constitution = abilityScore.getRandomScore()
+    randomCharacter.dexterity = abilityScore.getRandomScore()
+    randomCharacter.intelligence = abilityScore.getRandomScore()
+    randomCharacter.strength = abilityScore.getRandomScore()
+    randomCharacter.wisdom = abilityScore.getRandomScore()
+
+    # Get Ability Modifiers
+    randomCharacter.charisma = abilityScore.getAbilityModifier(randomCharacter.charisma)
+    randomCharacter.constitution = abilityScore.getAbilityModifier(randomCharacter.constitution)
+    randomCharacter.dexterity = abilityScore.getAbilityModifier(randomCharacter.dexterity)
+    randomCharacter.intelligence = abilityScore.getAbilityModifier(randomCharacter.intelligence)
+    randomCharacter.strength = abilityScore.getAbilityModifier(randomCharacter.strength)
+    randomCharacter.wisdom = abilityScore.getAbilityModifier(randomCharacter.wisdom)
+
     flaws = Flaws.CharacterFlaws()
 
     print "Class: " + dndClass + "      Subclass: " + subclass
     print "Name: " + dndName
     print "Race: " + dndRace
     print "Alignment: " + dndAlignment
-    print "Equiptment: " + str(equiptment)
     print "Flaws: " + str(flaws.getCharacterFlaws(dndClass))
 
+    randomCharacter.printCharaterInfo()
 if __name__ == '__main__':
     main()

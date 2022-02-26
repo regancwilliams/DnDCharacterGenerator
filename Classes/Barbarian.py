@@ -1,6 +1,13 @@
 from random import randint
+import random
+from Subclasses import BarbarianSubclasses
+from Character import Character
 
-class BarbarianDetails():
+class BarbarianDetails(Character):
+
+    def __init__(self):
+        self.height = 1
+        self.age = 1
 
     def getBarbarianEquiptment(self, simpleMeleeWeapons, simpleRangedWeapons, martialMeleeWeapons):
         equiptment = []
@@ -21,11 +28,7 @@ class BarbarianDetails():
         equiptment.append("Explorers Pack")
         equiptment.append("4 Javelins")
 
-        return equiptment
+        self.equiptment = equiptment
 
     def getBarbarianSubclass(self):
-        subclasses = ["Path of the Berserker",    "Path of the Zealot",              "Path of the Battleranger",
-                      "Path of the Storm Herald", "Path of the Ancestral Guardian",  "Path of the Totem Warrior"]
-        subclass = subclasses[randint(0, len(subclasses) - 1)]
-
-        return subclass
+        return random.choice(list(BarbarianSubclasses))

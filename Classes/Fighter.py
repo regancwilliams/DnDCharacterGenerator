@@ -1,5 +1,6 @@
 from random import randint
-
+import random
+from Subclasses import FighterSubclasses
 class FighterDetails():
 
     def getFighterEquiptment(self, martialMeleeWeapons, martialRangedWeapons):
@@ -50,11 +51,5 @@ class FighterDetails():
 
         return equiptment
 
-        def getFighterSubclass(self):
-            subclasses = ["Arcane Archer", "Battle Master",        "Cavalier",
-                          "Champion",      "Echo Knight",          "Eldritch Knight",
-                          "Psi Warrior",   "Purple Dragon Knight", "Rune Knight",
-                          "Samurai"]
-            subclass = subclasses[randint(0, len(subclasses) - 1)]
-
-            return subclass
+    def getFighterSubclass(self):
+        return random.choice(list(FighterSubclasses))

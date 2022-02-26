@@ -1,6 +1,14 @@
 from random import randint
+import random
+from Subclasses import ClericSubclasses
+from Character import Character
+from Tiefling import TieflingDetails
 
-class ClericDetails():
+class ClericDetails(Character):
+
+    def __init__(self):
+        self.height = 1
+        self.age = 1
 
     def getClericEquiptment(self, simpleMeleeWeapons, simpleRangedWeapons):
         equiptment = []
@@ -32,15 +40,7 @@ class ClericDetails():
             equiptment.append("Explorer's pack")
         equiptment.append("Shield")
         equiptment.append("Holy symbol")
-        return equiptment
+        self.equiptment = equiptment
 
     def getClericSubclass(self):
-        subclasses = ["Arcana Domain",   "Death Domain",     "Forge Domain",
-                      "Grave Domain",    "Knowledge Domain", "Life Domain",
-                      "Light Domain",    "Nature Domain",    "Order Domain",
-                      "Peace Domain",    "Temptest Domain",  "Trickery Domain",
-                      "Twilight Domain", "War Domain"]
-
-        subclass = subclasses[randint(0, len(subclasses) - 1)]
-
-        return subclass
+        return random.choice(list(ClericSubclasses))

@@ -1,6 +1,13 @@
 from random import randint
+import random
+from Subclasses import BardSubclasses
+from Character import Character
 
-class BardDetails():
+class BardDetails(Character):
+
+    def __init__(self):
+        self.height = 1
+        self.age = 1
 
     def getBardEquiptment(self, simpleMeleeWeapons, simpleRangedWeapons, musicalInstruments):
         equiptment = []
@@ -23,12 +30,8 @@ class BardDetails():
         equiptment.append(musicalInstruments[randint(0, len(musicalInstruments) - 1)])
         equiptment.append("Leather armor")
         equiptment.append("1 dagger")
-        return equiptment
+        
+        self.equiptment = equiptment
 
-        def getBardSubclass(self):
-            subclasses = ["College of Creation", "College of Eloquence", "College of Glamour",
-                          "College of Lore",     "College of Swords",    "College of Valor",
-                          "College of Whispers"]
-            subclass = subclasses[randint(0, len(subclasses) - 1)]
-
-            return subclass
+    def getBardSubclass(self):
+        return random.choice(list(BardSubclasses))
