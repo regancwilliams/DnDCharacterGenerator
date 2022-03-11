@@ -21,3 +21,7 @@ class DragonbornDetails(Character):
     # Dragonborn are heavier than humans, averaging almost 250 pounds
     def getWeight(self):
         return randint(Weight.DRAGONBORN_MIN_WEIGHT.value, Weight.DRAGONBORN_MAX_WEIGHT.value)
+
+    def updateAbilityScore(self, dragonborn):
+        dragonborn.strength += 2
+        dragonborn.charisma += 1

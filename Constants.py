@@ -69,8 +69,11 @@ class Languages(str, Enum):
     DWARVISH = "Dwarvish"
     ELVISH   = "Elvish"
     GNOMISH  = "Gnomish"
+    HALFLING = "Halfling"
     INFERNAL = "Infernal"
+    ORC      = "Orc"
 
 class size(str, Enum):
-    SMALL = "Small"
+    SMALL  = "Small"
     MEDIUM = "Medium"
+    LARGE  = "Large"

@@ -41,6 +41,25 @@ class simpleMeleeWeapons(str, Enum):
     SICKLE       = "Sickle"
     SPEAR        = "Spear"
 
+class simpleRangedWeapons(str, Enum):
+    LIGHT_CROSSBOW = "Light Crossbow"
+    DART           = "Dart"
+    SHORTBOW       = "Shortbow"
+    SLING          = "Sling"
+
+class musicalInstruments(str, Enum):
+    BAGPIPES = "Bagpipes"
+    DRUM = "Drum"
+    DULCIMER = "Dulcimer"
+    FLUTE = "Flute"
+    LUTE = "Lute"
+    LYRE = "Lyre"
+    HORN = "Horn"
+    PAN_FLUTE = "Pan flute"
+    SHAWM = "Shawm"
+    VIOL = "Viol"
+    #TODO See musical instruments. Navigators tools?
+
 class Weapons():
 
     def getMartialRangedWeapon(self):
@@ -57,3 +76,15 @@ class Weapons():
 
     def getSimpleMeleeWeapon(self):
         return random.choice(list(simpleMeleeWeapons))
+
+    def getSimpleRangedWeapon(self):
+        return random.choice(list(simpleRangedWeapons))
+
+    def getSimpleWeapon(self):
+        if (randint(0, 1) == 0):
+            return self.getSimpleMeleeWeapon()
+        else:
+            return self.getSimpleRangedWeapon()
+
+    def getMusicalInstrument(self):
+        return random.choice(list(musicalInstruments))

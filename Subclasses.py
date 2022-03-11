@@ -57,10 +57,22 @@ class FighterSubclasses(str, Enum):
 
 class MonkSubclasses(str, Enum):
     WAY_OF_THE_COBAALT_SOUL = "Way of the Cobalt Soul"
-    WAY_OF_THE_OPEN_HAND = "Way of the Open Hand"
+    WAY_OF_THE_OPEN_HAND    = "Way of the Open Hand"
 
 class PaladinSubclasses(str, Enum):
-    OATHBREAKER = "Oathbreaker"
+    OATHBREAKER = "Oathbreaker" #TODO
 
 class RangerSubclasses(str, Enum):
-    RANGERSUBCLASS = "RangerSubclass here"
+    RANGERSUBCLASS = "RangerSubclass here" #TODO
+
+class RogueSubclasses(str, Enum):
+    ARCANE_TRICKSTER = "Arcane Trickster"
+    ASSASSIN         = "Assassin"
+    INQUISITIVE      = "Inquisitive"
+    MASTERMIND       = "Mastermind"
+    SCOUT            = "Scout"
+    SWASHBUCKLER     = "Swashbuckler"
+    THIEF            = "Thief"
+
+class SorcererSubclasses(str, Enum):
+    SORCERERSUBCLASS = "SorcerSubclass here" #TODO

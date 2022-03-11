@@ -1,6 +1,7 @@
+from Character import Character
 from random import randint
 
-class WizardDetails():
+class WizardDetails(Character):
 
     def getWizardEquiptment(self):
         equiptment = []
@@ -20,7 +21,7 @@ class WizardDetails():
         else:
             equiptment.append("Explorers Pack")
         equiptment.append("Spellbook")
-        return equiptment
+        self.equiptment = equiptment
 
     def getWizardSubclass(self):
         subclasses = ["School of Transmutation", "School of Enchantment", "School of Abjuration",

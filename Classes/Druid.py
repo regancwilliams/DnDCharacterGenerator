@@ -1,7 +1,9 @@
+from Character import Character
 from random import randint
 import random
 from Subclasses import DruidSubclasses
-class DruidDetails():
+
+class DruidDetails(Character):
 
     def getDruidEquiptment(self, simpleMeleeWeapons, simpleRangedWeapons):
 
@@ -28,7 +30,7 @@ class DruidDetails():
         equiptment.append("An explorer's pack")
         equiptment.append("Druidic focus")
 
-        return equiptment
+        self.equiptment = equiptment
 
     def getDruidSubclass(self):
         return random.choice(list(DruidSubclasses))

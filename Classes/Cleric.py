@@ -6,10 +6,6 @@ from Tiefling import TieflingDetails
 
 class ClericDetails(Character):
 
-    def __init__(self):
-        self.height = 1
-        self.age = 1
-
     def getClericEquiptment(self, simpleMeleeWeapons, simpleRangedWeapons):
         equiptment = []
         num = randint(0, 1)
@@ -40,6 +36,7 @@ class ClericDetails(Character):
             equiptment.append("Explorer's pack")
         equiptment.append("Shield")
         equiptment.append("Holy symbol")
+        
         self.equiptment = equiptment
 
     def getClericSubclass(self):

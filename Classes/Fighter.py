@@ -49,7 +49,7 @@ class FighterDetails():
         else:
             equiptment.append("An explorer's pack")
 
-        return equiptment
+        self.equiptment = equiptment
 
     def getFighterSubclass(self):
         return random.choice(list(FighterSubclasses))

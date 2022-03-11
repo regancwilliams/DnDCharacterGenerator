@@ -1,8 +1,9 @@
+from Character import Character
 from random import randint
 import random
 from Subclasses import MonkSubclasses
 
-class MonkDetails():
+class MonkDetails(Character):
 
     def getMonkEquiptment(self, simpleMeleeWeapons, simpleRangedWeapons):
         equiptment = []
@@ -21,7 +22,8 @@ class MonkDetails():
         else:
             equiptment.append("Explorer's pack")
         equiptment.append("10 darts")
-        return equiptment
+
+        self.equiptment = equiptment
 
     def getMonkSubclass(self):
         return random.choice(list(MonkSubclasses))

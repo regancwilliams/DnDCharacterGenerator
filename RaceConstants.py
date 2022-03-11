@@ -5,6 +5,10 @@ class Speed(Enum):
     DWARF_SPEED      = 25
     ELF_SPEED        = 30
     GNOME_SPEED      = 25
+    HALFELF_SPEED    = 30
+    HALFLING_SPEED   = 25
+    HALFORC_SPEED    = 30
+    HUMAN_SPEED      = 30
     TIEFLING_SPEED   = 30
 
 class Age(Enum):
@@ -15,7 +19,15 @@ class Age(Enum):
     ELF_MIN_AGE        = 75
     ELF_MAX_AGE        = 750
     GNOME_MIN_AGE      = 20
-    GNOME_MAX_AGE     = 500
+    GNOME_MAX_AGE      = 500
+    HALFELF_MIN_AGE    = 18
+    HALFELF_MAX_AGE    = 200
+    HALFLING_MIN_AGE   = 20
+    HALFLING_MAX_AGE   = 175
+    HALFORC_MIN_AGE    = 14
+    HALFORC_MAX_AGE    = 75
+    HUMAN_MIN_AGE      = 20
+    HUMAN_MAX_AGE      = 100
     TIEFLING_MIN_AGE   = 12
     TIEFLING_MAX_AGE   = 100
 
@@ -29,6 +41,16 @@ class Weight(Enum):
     ELF_MAX_WEIGHT        = 175
     GNOME_MIN_WEIGHT      = 30
     GNOME_MAX_WEIGHT      = 50
+    HALFELF_MIN_WEIGHT    = 100
+    HALFELF_MAX_WEIGHT    = 200
+    HALFLING_MIN_WEIGHT   = 30
+    HALFLING_MAX_WEIGHT   = 50
+    HALFORC_MIN_WEIGHT    = 170
+    HALFORC_MAX_WEIGHT    = 260
+    HUMAN_MIN_WEIGHT      = 100
+    HUMAN_MAX_WEIGHT      = 250
+    TIEFLING_MIN_WEIGHT   = 100
+    TIEFLING_MAX_WEIGHT   = 250
 
 # Height in Inches
 class Height(Enum):
@@ -40,3 +62,11 @@ class Height(Enum):
     ELF_MAX_HEIGHT        = 77
     GNOME_MIN_HEIGHT      = 36
     GNOME_MAX_HEIGHT      = 48
+    HALFELF_MIN_HEIGHT    = 60
+    HALFELF_MAX_HEIGHT    = 72
+    HALFLING_MIN_HEIGHT   = 30
+    HALFLING_MAX_HEIGHT   = 42
+    HALFORC_MIN_HEIGHT    = 60
+    HALFORC_MAX_HEIGHT    = 84
+    HUMAN_MIN_HEIGHT      = 58
+    HUMAN_MAX_HEIGHT      = 77

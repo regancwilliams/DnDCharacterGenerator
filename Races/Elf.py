@@ -22,3 +22,6 @@ class ElfDetails(Character):
     # Elves have slender builds
     def getWeight(self):
         return randint(Weight.ELF_MIN_WEIGHT.value, Weight.ELF_MAX_WEIGHT.value)
+
+    def updateAbilityScore(self, elf):
+        elf.dexterity += 2

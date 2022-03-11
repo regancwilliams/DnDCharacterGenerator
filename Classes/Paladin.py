@@ -1,9 +1,10 @@
+from Character import Character
 from random import randint
 import random
 from Subclasses import PaladinSubclasses
 from Weapons import Weapons
 
-class PaladinDetails():
+class PaladinDetails(Character):
 
     def getPaladinEquiptment(self):
         equiptment = []
@@ -29,7 +30,7 @@ class PaladinDetails():
         equiptment.append("Chain Mail")
         equiptment.append("Holy Symbol")
 
-        return equiptment
+        self.equiptment = equiptment
 
     def getPaladinSubclass(self):
         return random.choice(list(PaladinSubclasses))

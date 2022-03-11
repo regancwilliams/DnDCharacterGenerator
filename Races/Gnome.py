@@ -20,3 +20,6 @@ class GnomeDetails(Character):
     # Gnomes avearag about 40 pounds
     def getWeight(self):
         return randint(Weight.GNOME_MIN_WEIGHT.value, Weight.GNOME_MAX_WEIGHT.value)
+
+    def updateAbilityScore(self, gnome):
+        gnome.intelligence += 2

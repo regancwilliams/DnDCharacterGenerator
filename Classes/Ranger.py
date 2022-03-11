@@ -7,10 +7,6 @@ from Character import Character
 
 class RangerDetails(Character):
 
-    def __init__(self):
-        self.height = 1
-        self.age = 1
-
     def getRangerEquiptment(self):
         equiptment = []
         weapon = Weapons()
@@ -27,9 +23,9 @@ class RangerDetails(Character):
             equiptment.append(weapon.getSimpleMeleeWeapon())
 
         if (randint(0,1) == 0):
-            equiptment.append(EquiptmentPacks.DUNGEONEERS_PACK)
+            equiptment.append(EquiptmentPacks.DUNGEONEERS_PACK.value)
         else:
-            equiptment.append(EquiptmentPacks.EXPLORERS_PACK)
+            equiptment.append(EquiptmentPacks.EXPLORERS_PACK.value)
 
         equiptment.append("Longbow and a quiver of 20 arrows")
 

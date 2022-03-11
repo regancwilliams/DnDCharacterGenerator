@@ -21,3 +21,6 @@ class DwarfDetails(Character):
     # Dwarves average about 150 pounds
     def getWeight(self):
         return randint(Weight.DWARF_MIN_WEIGHT.value, Weight.DWARF_MAX_WEIGHT.value)
+
+    def updateAbilityScore(self, dwarf):
+        dwarf.constitution += 2

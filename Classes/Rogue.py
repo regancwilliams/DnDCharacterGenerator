@@ -1,6 +1,9 @@
+from Character import Character
 from random import randint
+import random
+from Subclasses import RogueSubclasses
 
-class RogueDetails():
+class RogueDetails(Character):
 
     def getRogueEquiptment(self):
 
@@ -34,13 +37,7 @@ class RogueDetails():
         equiptment.append("Two daggers")
         equiptment.append("Thieves' tools")
 
-        return equiptment
+        self.equiptment = equiptment
 
-        def getRogueSubclass(self):
-            subClasses = ["Arcane Trickster", "Assassin", "Inquisitive",
-                          "Mastermind",       "Scout",    "Swashbuckler",
-                          "Thief"]
-
-            subclass = subclasses[randint(0, len(subclasses) - 1)]
-
-            return subclass
+    def getRogueSubclass(self):
+        return random.choice(list(RogueSubclasses))

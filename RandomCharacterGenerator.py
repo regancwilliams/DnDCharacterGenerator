@@ -1,8 +1,8 @@
 from random import randint
 import random
 import AbilityScores
-from Classes import Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Wizard
-from Races import Dragonborn, Dwarf, Elf, Gnome, Tiefling
+from Classes import Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Wizard
+from Races import Dragonborn, Dwarf, Elf, Gnome, HalfElf, Halfling, HalfOrc, Human, Tiefling
 import Flaws
 from Constants import *
 from Character import Character
@@ -42,18 +42,15 @@ def main():
     dndRace = random.choice(list(Races))
     dndAlignment = random.choice(list(Alignment))
 
-    dndClass = "Cleric"
-    dndRace = "Gnome"
-
     if dndClass == "Barbarian":
         randomCharacter = Barbarian.BarbarianDetails()
-        equiptment = randomCharacter.getBarbarianEquiptment(simpleMeleeWeapons, simpleRangedWeapons, martialMeleeWeapons)
-        subclass = randomCharacter.getBarbarianSubclass()
+        equiptment = randomCharacter.getEquiptment()
+        subclass = randomCharacter.getSubclass()
 
     elif dndClass == "Bard":
         randomCharacter = Bard.BardDetails()
-        equiptment = randomCharacter.getBardEquiptment(simpleMeleeWeapons, simpleRangedWeapons, musicalInstruments)
-        subclass = randomCharacter.getBardSubclass()
+        equiptment = randomCharacter.getEquiptment()
+        subclass = randomCharacter.getSubclass()
 
     elif dndClass == "Cleric":
         randomCharacter = Cleric.ClericDetails()
@@ -61,24 +58,24 @@ def main():
         subclass = randomCharacter.getClericSubclass()
 
     elif dndClass == "Druid":
-        druid = Druid.DruidDetails()
-        equiptment = druid.getDruidEquiptment(simpleMeleeWeapons, simpleRangedWeapons)
-        subclass = druid.getDruidSubclass()
+        randomCharacter = Druid.DruidDetails()
+        equiptment = randomCharacter.getDruidEquiptment(simpleMeleeWeapons, simpleRangedWeapons)
+        subclass = randomCharacter.getDruidSubclass()
 
     elif dndClass == "Fighter":
-        fighter = Fighter.FighterDetails()
-        equiptment = fighter.getFighterEquiptment(martialMeleeWeapons, martialRangedWeapons)
-        subclass = fighter.getFighterSubclass()
+        randomCharacter = Fighter.FighterDetails()
+        equiptment = randomCharacter.getFighterEquiptment(martialMeleeWeapons, martialRangedWeapons)
+        subclass = randomCharacter.getFighterSubclass()
 
     elif dndClass == "Monk":
-        monk = Monk.MonkDetails()
-        equiptment = monk.getMonkEquiptment(simpleMeleeWeapons, simpleRangedWeapons)
-        subclass = monk.getMonkSubclass()
+        randomCharacter = Monk.MonkDetails()
+        equiptment = randomCharacter.getMonkEquiptment(simpleMeleeWeapons, simpleRangedWeapons)
+        subclass = randomCharacter.getMonkSubclass()
 
     elif dndClass == "Paladin":
-        paladin = Paladin.PaladinDetails()
-        equiptment = paladin.getPaladinEquiptment()
-        subclass = paladin.getPaladinSubclass()
+        randomCharacter = Paladin.PaladinDetails()
+        equiptment = randomCharacter.getPaladinEquiptment()
+        subclass = randomCharacter.getPaladinSubclass()
 
     elif dndClass == "Ranger":
         randomCharacter = Ranger.RangerDetails()
@@ -86,30 +83,40 @@ def main():
         subclass = randomCharacter.getRangerSubclass()
 
     elif dndClass == "Rogue":
-        rogue = Rogue.RogueDetails()
-        equiptment = rogue.getRogueEquiptment()
-        subclass = rogue.getRogueSubclass()
+        randomCharacter = Rogue.RogueDetails()
+        equiptment = randomCharacter.getRogueEquiptment()
+        subclass = randomCharacter.getRogueSubclass()
 
     elif dndClass == "Sorcerer":
-        x = 4
+        randomCharacter = Sorcerer.SorcererDetails()
+        equiptment = randomCharacter.getEquiptment()
+        subclass = randomCharacter.getSubclass()
 
     elif dndClass == "Warlock":
         x = 4
 
     elif dndClass == "Wizard":
-            wizard = Wizard.WizardDetails()
-            equiptment = wizard.getWizardEquiptment()
-            subclass = wizard.getWizardSubclass()
+        randomCharacter = Wizard.WizardDetails()
+        equiptment = randomCharacter.getWizardEquiptment()
+        subclass = randomCharacter.getWizardSubclass()
 
-    if dndRace == "Dragonborn":
+    if dndRace == Races.DRAGONBORN:
         characterRace = Dragonborn.DragonbornDetails()
-    elif dndRace == "Dwarf":
+    elif dndRace == Races.DWARF:
         characterRace = Dwarf.DwarfDetails()
-    elif dndRace == "Elf":
+    elif dndRace == Races.ELF:
         characterRace = Elf.ElfDetails()
-    elif dndRace == "Gnome":
+    elif dndRace == Races.GNOME:
         characterRace = Gnome.GnomeDetails()
-    elif dndRace == "Tifling":
+    elif dndRace == Races.HALF_ELF:
+        characterRace = HalfElf.HalfElfDetails()
+    elif dndRace == Races.HALFLING:
+        characterRace = Halfling.HalflingDetails()
+    elif dndRace ==  Races.HALF_ORC:
+        characterRace = HalfOrc.HalfOrcDetails()
+    elif dndRace == Races.HUMAN:
+        characterRace = Human.HumanDetails()
+    elif dndRace == Races.TIFLING:
         characterRace = Tiefling.TieflingDetails()
 
     abilityScore = AbilityScores.AbilityScores()
@@ -128,6 +135,8 @@ def main():
     randomCharacter.strength = abilityScore.getRandomScore()
     randomCharacter.wisdom = abilityScore.getRandomScore()
 
+    characterRace.updateAbilityScore(randomCharacter)
+
     # Get Ability Modifiers
     randomCharacter.charisma = abilityScore.getAbilityModifier(randomCharacter.charisma)
     randomCharacter.constitution = abilityScore.getAbilityModifier(randomCharacter.constitution)
@@ -145,5 +154,6 @@ def main():
     print "Flaws: " + str(flaws.getCharacterFlaws(dndClass))
 
     randomCharacter.printCharaterInfo()
+
 if __name__ == '__main__':
     main()
